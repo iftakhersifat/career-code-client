@@ -53,7 +53,7 @@ const MoreDetails = () => {
             
                         {/* Footer: Apply Button */}
                         <div className="text-right">
-                          <Link to={`/details/${job._id}`}><button className="btn bg-blue-500 text-white px-4 py-2 rounded-xl hover:bg-blue-600">
+                          <Link to={`/apply/${job._id}`}><button className="btn bg-blue-500 text-white px-4 py-2 rounded-xl hover:bg-blue-600">
                             Apply Now
                           </button></Link>
                         </div>

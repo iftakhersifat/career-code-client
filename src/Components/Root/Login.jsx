@@ -1,12 +1,15 @@
 import Lottie from 'lottie-react';
 import React, { use } from 'react';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import login from '../../lottie/login.json'
 import { AuthContext } from '../Firebase/AuthProvider';
 
 const Login = () => {
 
     const {LogIn}=use(AuthContext)
+    const navigate =useNavigate()
+    const location =useLocation()
+    const from = location.state || "/"
 
     const handleLogin=e=>{
         e.preventDefault();
@@ -19,6 +22,7 @@ const Login = () => {
         LogIn(email,password)
         .then(result=>{
             console.log(result.user)
+            navigate(from)
         }).catch(error=>{
             console.log(error)
         })
