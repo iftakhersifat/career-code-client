@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { use } from 'react';
 import { Link, NavLink } from 'react-router';
+import { AuthContext } from '../Firebase/AuthProvider';
 
 const Navbar = () => {
+  const {user}=use(AuthContext)
 
     const links =<>
         <li><NavLink to="/">Home</NavLink></li>
@@ -30,7 +32,9 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <Link to="/login"><button className='btn rounded-xl px-6 py-2'>Login</button></Link>
+    {
+      user ? <button className='btn rounded-xl px-6 py-2'>Log Out</button>:<Link to="/login"><button className='btn rounded-xl px-6 py-2'>Login</button></Link>
+    }
   </div>
 </div>
     );
