@@ -1,9 +1,28 @@
 import Lottie from 'lottie-react';
-import React from 'react';
+import React, { use } from 'react';
 import { Link } from 'react-router';
 import register from "../../lottie/register.json";
+import { AuthContext } from '../Firebase/AuthProvider';
 
 const SignUp = () => {
+    const {createUser} =use(AuthContext)
+    
+    const handleSignup=e=>{
+        e.preventDefault();
+        const form =e.target;
+        const email =form.email.value;
+        const password =form.password.value;
+        console.log(email, password)
+
+        // createUser
+        createUser(email,password)
+        .then(result=>{
+            console.log(result.user)
+        }).catch(error=>{
+            console.log(error)
+        })
+    }
+
     return (
         <div className="hero min-h-screen">
             <div className="hero-content flex-col lg:flex-row-reverse">
@@ -21,7 +40,7 @@ const SignUp = () => {
                 {/* Form Section */}
                 <div className="card md:w-[500px] w-[350px] border border-green-200 bg-gray-200 shrink-0 shadow-md">
                     <div className="card-body">
-                        <form className="fieldset">
+                        <form onSubmit={handleSignup} className="fieldset">
 
                             <label className="label">Email</label>
                             <input
