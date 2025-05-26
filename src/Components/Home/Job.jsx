@@ -29,14 +29,14 @@ const Job = () => {
             <div className="flex gap-4 items-center mb-4">
               <img src={job.company_logo} className="w-16 h-16 object-contain" alt="Company Logo" />
               <div>
-                <h2 className="font-semibold">{job.jobType}</h2>
+                <h2 className="font-semibold">{job.company}</h2>
                 <p className="text-sm text-gray-600">{job.location}</p>
               </div>
             </div>
 
             {/* Job Details */}
             <div className="space-y-3 flex-1">
-              <h2 className="font-bold text-xl">{job.title}</h2>
+              <h2 className="font-bold text-xl">{job.title} ({job.jobType})</h2>
               <p className="text-sm font-medium">Salary: {job.salaryRange.min} - {job.salaryRange.max} {job.salaryRange.currency}</p>
               <p className="text-gray-700 text-sm">{job.description}</p>
 
