@@ -3,7 +3,13 @@ import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../Firebase/AuthProvider';
 
 const Navbar = () => {
-  const {user}=use(AuthContext)
+  const {user, logOut}=use(AuthContext)
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => console.log('Logout successfully!'))
+      .catch(error => console.log(error.message));
+  };
 
     const links =<>
         <li><NavLink to="/">Home</NavLink></li>
@@ -33,7 +39,7 @@ const Navbar = () => {
   </div>
   <div className="navbar-end">
     {
-      user ? <button className='btn rounded-xl px-6 py-2'>Log Out</button>:<Link to="/login"><button className='btn rounded-xl px-6 py-2'>Login</button></Link>
+      user ? <button onClick={handleLogOut} className='btn rounded-xl px-6 py-2'>Log Out</button>:<Link to="/login"><button className='btn rounded-xl px-6 py-2'>Login</button></Link>
     }
   </div>
 </div>
