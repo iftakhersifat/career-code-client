@@ -1,13 +1,47 @@
-import React from 'react';
+import Lottie from 'lottie-react';
+import React, { use } from 'react';
 import { Link } from 'react-router';
+import login from '../../lottie/login.json'
+import { AuthContext } from '../Firebase/AuthProvider';
 
 const Login = () => {
+
+    const {LogIn}=use(AuthContext)
+
+    const handleLogin=e=>{
+        e.preventDefault();
+        const form =e.target;
+        const email =form.email.value;
+        const password =form.password.value;
+        console.log(email, password)
+
+        // Login
+        LogIn(email,password)
+        .then(result=>{
+            console.log(result.user)
+        }).catch(error=>{
+            console.log(error)
+        })
+    }
+
     return (
         <div className="hero  min-h-screen ">
         <div className="hero-content flex-col lg:flex-row-reverse">
+
+        {/* Lottie Animation */}
+                <div className="w-[300px] md:w-[400px]">
+                    <Lottie
+                        animationData={login}
+                        loop={true}
+                        autoplay={true}
+                        style={{ width: '100%', height: '100%' }}
+                    />
+                </div>
+
+
         <div className="card md:w-[500px] w-[350px] border border-green-200 bg-gray-200 shrink-0 shadow-md">
         <div className="card-body">
-        <form className="fieldset">
+        <form onSubmit={handleLogin} className="fieldset">
 
         <label className="label">Email</label>
         <input type="email" className="input w-full" name='email' placeholder="Email" />
