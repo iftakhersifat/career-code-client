@@ -1,9 +1,12 @@
 import React from 'react';
 import { useParams } from 'react-router';
+import useAuth from '../Firebase/useAuth';
+import axios from 'axios';
 
 const JobApply = () => {
     const {id}=useParams()
-    console.log(id)
+    const {user}=useAuth()
+    console.log(id, user)
 
     const handelApply =e=>{
         e.preventDefault();
@@ -12,6 +15,21 @@ const JobApply = () => {
         const github =form.github.value;
         const resume =form.resume.value;
         console.log(linkedIN, github, resume)
+
+        const application ={
+            id,
+            applicant : user.email,
+            linkedIN,
+            github,
+            resume
+        }
+
+        axios.post("http://localhost:3000/applications", application)
+        .then(res=>{
+            console.log(res.data)
+        }).catch(error=>{
+            console.log(error)
+        })
     }
 
   return (
