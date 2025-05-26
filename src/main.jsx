@@ -11,6 +11,7 @@ import Home from './Components/Home/Home.jsx';
 import SignUp from './Components/Root/SignUp.jsx';
 import Login from './Components/Root/Login.jsx';
 import AuthProvider from './Components/Firebase/AuthProvider.jsx';
+import MoreDetails from './Components/Home/MoreDetails.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -19,6 +20,9 @@ const router = createBrowserRouter([
       {index: true, Component: Home},
       {path:"signup", Component:SignUp},
       {path:"login", Component:Login},
+      {path:"details/:id",
+        loader: ({params})=>fetch(`http://localhost:3000/jobs/${params.id}`),
+       Component:MoreDetails},
     ]
   },
 ]);

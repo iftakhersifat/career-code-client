@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router';
 
 const Job = () => {
   const [jobs, setJobs] = useState([]);
@@ -37,7 +38,7 @@ const Job = () => {
             <div className="space-y-3 flex-1">
               <h2 className="font-bold text-xl">{job.title}</h2>
               <p className="text-sm font-medium">Salary: {job.salaryRange.min} - {job.salaryRange.max} {job.salaryRange.currency}</p>
-              <p className="text-gray-700 text-sm line-clamp-3">{job.description}</p>
+              <p className="text-gray-700 text-sm">{job.description}</p>
 
               <div className="flex flex-wrap gap-2 mt-3">
                 {job.requirements.map((skill, index) => (
@@ -53,9 +54,9 @@ const Job = () => {
 
             {/* Footer: Apply Button */}
             <div className="text-right">
-              <button className="btn bg-blue-500 text-white px-4 py-2 rounded-xl hover:bg-blue-600">
-                Apply Now
-              </button>
+              <Link to={`/details/${job._id}`}><button className="btn bg-blue-500 text-white px-4 py-2 rounded-xl hover:bg-blue-600">
+                More Details
+              </button></Link>
             </div>
           </div>
         ))}
