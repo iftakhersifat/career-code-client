@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router';
 import useAuth from '../Firebase/useAuth';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const JobApply = () => {
     const {id}=useParams()
@@ -27,6 +28,13 @@ const JobApply = () => {
         axios.post("http://localhost:3000/applications", application)
         .then(res=>{
             console.log(res.data)
+            if(res.data.insertedId){
+              Swal.fire({
+                title: "Your Application has been Submitted",
+                icon: "success",
+                draggable: true
+              });
+            }
         }).catch(error=>{
             console.log(error)
         })
