@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React from 'react';
+import Swal from 'sweetalert2';
 
 const AddJob = () => {
 
@@ -33,7 +34,15 @@ const AddJob = () => {
 //   data send in db
      
      axios.post("http://localhost:3000/jobs",rest)
-     .then(res=>console.log(res))
+     .then(res=>{
+        if(res.data.insertedId){
+              Swal.fire({
+                title: "This New Job has been Added and Published Successfully",
+                icon: "success",
+                draggable: true
+              });
+            }
+     })
      .catch(error=>console.log(error))
 
 };
