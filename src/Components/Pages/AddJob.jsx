@@ -1,3 +1,4 @@
+import { object } from 'motion/react-client';
 import React from 'react';
 
 const AddJob = () => {
@@ -23,6 +24,7 @@ const AddJob = () => {
    rest.responsibilities=responsibilities
 
   console.log(rest); 
+  console.log(Object.keys(rest).length)
 };
 
 
@@ -71,7 +73,7 @@ const AddJob = () => {
 <fieldset className="fieldset bg-base-200 border-base-300 rounded-box  border p-4">
   <legend className="fieldset-legend">Application Deadline</legend>
 
-  <input type="date" className="input" />
+  <input type="date" name='deadline' className="input" />
 
 </fieldset>
 
@@ -147,10 +149,10 @@ const AddJob = () => {
   <legend className="fieldset-legend">HR Info</legend>
 
   <label className="label">HR Name</label>
-  <input type="text" name='name' placeholder="HR Name..." className="input input-bordered w-full" required />
+  <input type="text" name='hr_name' placeholder="HR Name..." className="input input-bordered w-full" required />
 
   <label className="label">HR Email</label>
-  <input type="text" className="input input-bordered w-full" name='email' placeholder="HR Email..." />
+  <input type="text" className="input input-bordered w-full" name='hr_email' placeholder="HR Email..." />
 </fieldset>
 
 {/* button */}
