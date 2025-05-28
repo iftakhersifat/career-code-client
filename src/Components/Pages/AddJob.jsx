@@ -1,4 +1,4 @@
-import { object } from 'motion/react-client';
+import axios from 'axios';
 import React from 'react';
 
 const AddJob = () => {
@@ -23,8 +23,19 @@ const AddJob = () => {
    const responsibilities=rest.responsibilities.split(",").map(res=>res.trim())
    rest.responsibilities=responsibilities
 
+//  for active 
+    rest.status="Active"
+
   console.log(rest); 
   console.log(Object.keys(rest).length)
+
+
+//   data send in db
+     
+     axios.post("http://localhost:3000/jobs",rest)
+     .then(res=>console.log(res))
+     .catch(error=>console.log(error))
+
 };
 
 
