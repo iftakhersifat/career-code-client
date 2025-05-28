@@ -16,6 +16,7 @@ import PrivateRoute from './Components/Firebase/PrivateRoute.jsx';
 import JobApply from './Components/Home/JobApply.jsx';
 import MyApplication from './Components/Pages/MyApplication.jsx';
 import AddJob from './Components/Pages/AddJob.jsx';
+import NotFound from './Components/NotFound/NotFound.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -32,6 +33,9 @@ const router = createBrowserRouter([
       {path: "addJob",element: <PrivateRoute><AddJob></AddJob></PrivateRoute>},
     ]
   },
+  {
+    path: "*", Component: NotFound
+  }
 ]);
 
 createRoot(document.getElementById('root')).render(
