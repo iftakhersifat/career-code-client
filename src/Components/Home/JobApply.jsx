@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router';
+import { Link, useParams } from 'react-router';
 import useAuth from '../Firebase/useAuth';
 import axios from 'axios';
 import Swal from 'sweetalert2';
@@ -91,9 +91,9 @@ const JobApply = () => {
           </div>
 
           <div className="text-right">
-            <button type="submit" className="btn bg-blue-500 text-white hover:bg-blue-600 px-6">
+            <Link to="/"><button type="submit" className="btn rounded-xl bg-blue-500 text-white hover:bg-blue-600 px-6">
               Apply
-            </button>
+            </button></Link>
           </div>
         </fieldset>
       </form>
