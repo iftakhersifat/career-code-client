@@ -3,11 +3,12 @@ import React from 'react';
 const AddJob = () => {
     return (
         <div className="max-w-2xl mx-auto px-4 mt-10 mb-20">
-            <form className="fieldset bg-base-200 border-base-300 rounded-box  border p-4">
+            <form className='space-y-2' >
+                <fieldset className="fieldset bg-base-200 border-base-300 rounded-box  border p-4">
   <legend className="fieldset-legend">Basic Info</legend>
 
-  <label className="label">Title</label>
-  <input type="text" name='title' placeholder="My awesome page" className="input input-bordered w-full" required />
+  <label className="label">Job Title</label>
+  <input type="text" name='title' placeholder="Job title" className="input input-bordered w-full" required />
 
   <label className="label">Company</label>
   <input type="text" className="input input-bordered w-full" name='company' placeholder="Company Name" />
@@ -17,7 +18,7 @@ const AddJob = () => {
 
   <label className="label">Company Logo</label>
   <input type="url" className="input input-bordered w-full" name='logo' placeholder="Company URL" />
-</form>
+</fieldset>
 
 {/* job type */}
 <fieldset className="fieldset bg-base-200 border-base-300 rounded-box  border p-4">
@@ -94,6 +95,44 @@ const AddJob = () => {
     </div>
   </div>
 </fieldset>
+
+{/* Description */}
+<fieldset className="fieldset bg-base-200 border-base-300 rounded-box  border p-4">
+  <legend className="fieldset-legend">Job Description</legend>
+
+  <textarea className="textarea w-full" name='description' placeholder="Job Description"></textarea>
+
+</fieldset>
+{/* requirements: */}
+<fieldset className="fieldset bg-base-200 border-base-300 rounded-box  border p-4">
+  <legend className="fieldset-legend">Job Requirements:</legend>
+
+  <textarea className="textarea w-full" name='requirements' placeholder="requirements (separate by comma)"></textarea>
+
+</fieldset>
+{/* responsibilities */}
+<fieldset className="fieldset bg-base-200 border-base-300 rounded-box  border p-4">
+  <legend className="fieldset-legend">Responsibilities</legend>
+
+  <textarea className="textarea w-full" name='responsibilities' placeholder="responsibilities (separate by comma)"></textarea>
+
+</fieldset>
+{/* hr name & email */}
+<fieldset className="fieldset bg-base-200 border-base-300 rounded-box  border p-4">
+  <legend className="fieldset-legend">HR Info</legend>
+
+  <label className="label">HR Name</label>
+  <input type="text" name='name' placeholder="HR Name..." className="input input-bordered w-full" required />
+
+  <label className="label">HR Email</label>
+  <input type="text" className="input input-bordered w-full" name='email' placeholder="HR Email..." />
+</fieldset>
+
+{/* button */}
+<button type="submit" className="btn rounded-xl w-full bg-blue-500 text-white hover:bg-blue-600 px-6">
+              Add Job
+            </button>
+   </form>
 
 
 
