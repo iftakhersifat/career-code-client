@@ -8,7 +8,21 @@ const AddJob = () => {
   const formData = new FormData(form);
 
   const data = Object.fromEntries(formData.entries());
-  console.log(data); // { jobTitle: '...', salary: '...', ... }
+
+//  for salary
+  const {min, max, currency, ...rest}=data
+  rest.salaryRange={min,max,currency}
+
+// for requirements
+  const requirements=rest.requirements.split(",")
+  const newRequirements =requirements.map(req=>req.trim())
+  rest.requirements=newRequirements
+
+//  for responsibility
+   const responsibilities=rest.responsibilities.split(",").map(res=>res.trim())
+   rest.responsibilities=responsibilities
+
+  console.log(rest); 
 };
 
 
@@ -37,9 +51,9 @@ const AddJob = () => {
 
   <div className="filter">
   <input className="btn filter-reset" type="radio" name="jobType" aria-label="All"/>
-  <input className="btn" type="radio" name="jobType" aria-label="On-Site"/>
-  <input className="btn" type="radio" name="jobType" aria-label="Remote"/>
-  <input className="btn" type="radio" name="jobType" aria-label="Hybrid"/>
+  <input className="btn" type="radio" name="jobType" value="On-site" aria-label="On-Site"/>
+  <input className="btn" type="radio" name="jobType" value="Remote" aria-label="Remote"/>
+  <input className="btn" type="radio" name="jobType" value="Hybrid" aria-label="Hybrid"/>
 </div>
 </fieldset>
 {/* job category */}
@@ -71,7 +85,7 @@ const AddJob = () => {
       <label className="label font-medium">Minimum Salary</label>
       <input 
         type="text" 
-        name='minimum' 
+        name='min' 
         placeholder="Enter minimum salary" 
         className="input input-bordered w-full" 
         required 
@@ -83,7 +97,7 @@ const AddJob = () => {
       <label className="label font-medium">Maximum Salary</label>
       <input 
         type="text" 
-        name='maximum' 
+        name='max' 
         placeholder="Enter maximum salary" 
         className="input input-bordered w-full" 
       />
