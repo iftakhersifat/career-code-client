@@ -1,4 +1,5 @@
 import React, { use } from 'react';
+import { Link } from 'react-router';
 
 const PostedJobList = ({promise}) => {
     const postedList =use(promise)
@@ -15,7 +16,7 @@ const PostedJobList = ({promise}) => {
         </th>
         <th>Company</th>
         <th>Job Category & Location</th>
-        <th>JobType</th>
+        <th>Deadline</th>
         <th></th>
       </tr>
     </thead>
@@ -37,18 +38,18 @@ const PostedJobList = ({promise}) => {
             </div> */}
             <div>
               <div className="font-bold">{lists.company}</div>
-              <div className="text-sm opacity-50">{lists.title}</div>
+              {/* <div className="text-sm opacity-50">{lists.title}</div> */}
             </div>
           </div>
         </td>
         <td>
-          {lists.category}
+          {lists.title}
           <br />
           <span className="badge badge-ghost badge-sm">{lists.location}</span>
         </td>
-        <td>{lists.jobType}</td>
+        <td>{lists.deadline}</td>
         <th>
-          <button className="btn btn-ghost btn-xs">Details</button>
+          <Link to={`/applications/${lists._id}`}><button className="btn bg-blue-400 text-white rounded-box px-4 py-3 hover:bg-blue-600 btn-xs">View Application</button></Link>
         </th>
       </tr>
         
