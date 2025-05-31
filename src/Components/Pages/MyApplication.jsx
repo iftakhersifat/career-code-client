@@ -4,7 +4,9 @@ import ApplicationsList from './ApplicationsList';
 import useAuth from '../Firebase/useAuth';
 
 const promise=email=>{
-    return fetch(`http://localhost:3000/applications?email=${email}`).then(res=>res.json())
+    return fetch(`http://localhost:3000/applications?email=${email}`,{
+        credentials:'include'
+    }).then(res=>res.json())
 }
 
 const MyApplication = () => {
